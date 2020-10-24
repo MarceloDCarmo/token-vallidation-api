@@ -17,7 +17,7 @@ public class RemainingMilliSecondsTest {
 		long fim = System.currentTimeMillis();
 		
 		System.out.println("BubleSort: " + (fim - inicio)/1000.0);
-		System.out.println("Tempo restante: " + tolken.getRemainingMilliSeconds()/1000.0);
+		System.out.println("Time remaining: " + tolken.getRemainingMilliSeconds()/1000.0);
 		
 	}
 	
