@@ -7,6 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class User {
@@ -17,10 +22,13 @@ public class User {
 
 	@Valid
 	@Email
+	@NotBlank
 	private String email;
-	private String password;
+	@NotBlank
+	String password;
 	@OneToOne
-	private Token tolken;
+	@Cascade(CascadeType.ALL)
+	private Token token = new Token();
 
 	public Long getId() {
 		return id;
@@ -43,15 +51,11 @@ public class User {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = new BCryptPasswordEncoder().encode(password);
 	}
 
 	public Token getTolken() {
-		return tolken;
-	}
-
-	public void setTolken(Token tolken) {
-		this.tolken = tolken;
+		return token;
 	}
 
 	@Override
