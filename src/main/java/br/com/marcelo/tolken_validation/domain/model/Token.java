@@ -46,7 +46,7 @@ public class Token {
 	}
 	
 	public boolean isUpToDate() {
-		if(OffsetDateTime.now().minusSeconds(30L).isBefore(this.init)) {
+		if(OffsetDateTime.now().minusSeconds(30L).isAfter(this.init)) {
 			return false;
 		}
 		return true;
