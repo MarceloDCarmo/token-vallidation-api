@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 
@@ -18,6 +19,7 @@ public class User {
 	@Email
 	private String email;
 	private String password;
+	@OneToOne
 	private Token tolken;
 
 	public Long getId() {
